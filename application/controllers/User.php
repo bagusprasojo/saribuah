@@ -76,7 +76,11 @@ class User extends CI_Controller
     public function login(){
 
         if($this->input->post()){
-            if($this->user_model->doLogin()) redirect(site_url($_SESSION['halaman_terakhir']));
+            $halaman_terakhir = "";
+            if (isset($_SESSION['halaman_terakhir'])){
+                $halaman_terakhir = $_SESSION['halaman_terakhir'];
+            }
+            if($this->user_model->doLogin()) redirect(site_url($halaman_terakhir));
         }
 
         $this->load->view("v_login.php");
