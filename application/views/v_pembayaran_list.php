@@ -75,7 +75,7 @@
 											<?php echo $pembayaran->keterangan ?>
 										</td>
 										<td width="210">
-											<a href="<?php echo site_url('pembayaran/settlement_piutang/'.$pembayaran->pembeli_id) ?>">
+											<a href="<?php echo site_url('pembayaran/settlement_piutang/'.$pembayaran->pembayaran_id) ?>">
 												 Settlement  </a> | 
 											<a href="<?php echo site_url('pembayaran/edit/'.$pembayaran->pembayaran_id) ?>">
 												 Edit </a> | 

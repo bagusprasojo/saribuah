@@ -538,3 +538,88 @@ DEBUG - 2020-04-12 05:59:52 --> UTF-8 Support Enabled
 DEBUG - 2020-04-12 05:59:52 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2020-04-12 05:59:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 DEBUG - 2020-04-12 05:59:52 --> Total execution time: 0.0633
+ERROR - 2020-04-12 08:23:12 --> Severity: Notice --> Trying to get property 'no_pembayaran' of non-object C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 27
+ERROR - 2020-04-12 08:23:26 --> Severity: Notice --> Trying to get property 'no_transaksi' of non-object C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 27
+ERROR - 2020-04-12 08:24:52 --> Severity: Notice --> Undefined variable: pembayarans C:\xampp\htdocs\saribuah\application\views\v_pembayaran_list.php 49
+ERROR - 2020-04-12 08:24:52 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\saribuah\application\views\v_pembayaran_list.php 49
+ERROR - 2020-04-12 08:24:56 --> Severity: Notice --> Undefined variable: pembayarans C:\xampp\htdocs\saribuah\application\views\v_pembayaran_list.php 49
+ERROR - 2020-04-12 08:24:56 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\saribuah\application\views\v_pembayaran_list.php 49
+ERROR - 2020-04-12 08:28:06 --> Severity: Notice --> Undefined variable: id C:\xampp\htdocs\saribuah\application\controllers\Pembayaran.php 85
+ERROR - 2020-04-12 08:28:06 --> Severity: Notice --> Trying to get property 'no_pembayaran' of non-object C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 27
+ERROR - 2020-04-12 08:28:54 --> Severity: Notice --> Trying to get property 'no_pembayaran' of non-object C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 27
+ERROR - 2020-04-12 08:30:48 --> Severity: Notice --> Undefined variable: isPasswordTrue xdebug://debug-eval 1
+ERROR - 2020-04-12 08:30:48 --> Severity: Notice --> Undefined variable: isAdmin xdebug://debug-eval 1
+ERROR - 2020-04-12 08:30:48 --> Severity: Notice --> Undefined property: Pembayaran::$no_transaksi xdebug://debug-eval 1
+ERROR - 2020-04-12 08:30:58 --> Severity: Notice --> Undefined variable: isAdmin xdebug://debug-eval 1
+ERROR - 2020-04-12 08:30:58 --> Severity: Notice --> Undefined property: Pembayaran::$no_transaksi xdebug://debug-eval 1
+ERROR - 2020-04-12 08:30:59 --> Severity: Notice --> Undefined property: Pembayaran::$no_transaksi xdebug://debug-eval 1
+ERROR - 2020-04-12 08:31:14 --> Severity: Warning --> Use of undefined constant pembayaran - assumed 'pembayaran' (this will throw an Error in a future version of PHP) xdebug://debug-eval 1
+ERROR - 2020-04-12 08:31:39 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:31:43 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:31:44 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:31:56 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:31:58 --> Severity: Notice --> Trying to get property 'no_pembayaran' of non-object C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 27
+ERROR - 2020-04-12 08:32:00 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:32:02 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:32:03 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:32:04 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:32:04 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:33:03 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:33:52 --> Severity: Notice --> Undefined variable: no_pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:33:52 --> Severity: Notice --> Undefined property: Pembayaran::$ C:\xampp\htdocs\saribuah\system\core\Model.php 73
+ERROR - 2020-04-12 08:34:04 --> Severity: Notice --> Undefined variable: no_pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:34:04 --> Severity: Notice --> Undefined property: Pembayaran::$ C:\xampp\htdocs\saribuah\system\core\Model.php 73
+ERROR - 2020-04-12 08:34:04 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:34:07 --> Severity: Notice --> Undefined variable: no_pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:34:07 --> Severity: Notice --> Undefined property: Pembayaran::$ C:\xampp\htdocs\saribuah\system\core\Model.php 73
+ERROR - 2020-04-12 08:34:24 --> Severity: Notice --> Undefined variable: no_pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:34:24 --> Severity: Notice --> Undefined property: Pembayaran::$ C:\xampp\htdocs\saribuah\system\core\Model.php 73
+ERROR - 2020-04-12 08:34:29 --> Severity: Notice --> Undefined variable: no_pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:34:29 --> Severity: Notice --> Undefined property: Pembayaran::$ C:\xampp\htdocs\saribuah\system\core\Model.php 73
+ERROR - 2020-04-12 08:34:55 --> Severity: Notice --> Trying to get property 'no_pembayaran' of non-object C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 27
+ERROR - 2020-04-12 08:35:10 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:10 --> Severity: Notice --> Undefined variable: no_pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:10 --> Severity: Notice --> Trying to get property '' of non-object xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:10 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:10 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:15 --> Severity: Notice --> Undefined variable: no_pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:15 --> Severity: Notice --> Undefined property: Pembayaran::$ C:\xampp\htdocs\saribuah\system\core\Model.php 73
+ERROR - 2020-04-12 08:35:15 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:15 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:25 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:25 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:33 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:33 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:48 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:48 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:51 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:51 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:51 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:55 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:55 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:55 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:56 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:56 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:56 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:56 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:56 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:56 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:57 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:57 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:57 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:58 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:58 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:35:58 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:04 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:04 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:04 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:08 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:08 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:08 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:27 --> Severity: Notice --> Undefined variable: pembayaran xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:27 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:27 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:31 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:31 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
+ERROR - 2020-04-12 08:36:33 --> Severity: Notice --> Undefined index: piutangs xdebug://debug-eval 1
+ERROR - 2020-04-12 08:43:34 --> Severity: Notice --> Undefined variable: no C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 41

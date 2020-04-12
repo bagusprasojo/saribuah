@@ -20,7 +20,51 @@
       <!-- DataTables -->
 				
 					<div class="card-header">
-						<a href="<?php echo site_url('piutang/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+					<h6> Data Pembayaran</h6>
+					<table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>No Pembayaran</th>
+										<th>Tanggal</th>
+										<th>Pembeli</th>
+										<th>Nominal</th>
+										<th>Terbayarkan</th>
+										<th>Sisa</th>										
+										<th>Keterangan</th>
+										
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td width="140">
+											<?php echo $pembayaran->no_pembayaran ?>
+										</td>
+										<td width="100">
+											<?php echo $pembayaran->tgl_transaksi ?>
+										</td>
+										<td>
+											<?php echo $pembayaran->nama_pembeli ?>
+										</td>
+										<td  width="100" align="right">
+										<?php echo number_format($pembayaran->nominal) ?>
+										</td>
+										<td  width="100" align="right"> 
+										<?php echo number_format($pembayaran->terbayarkan) ?>
+										</td>
+										<td  width="100" align="right">
+											<?php echo number_format($pembayaran->nominal -$pembayaran->terbayarkan) ?>
+										</td>
+										<td>
+											<?php echo $pembayaran->keterangan ?>
+										</td>
+										
+									</tr>
+									
+
+								</tbody>
+							</table>
+
+					
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -69,9 +113,15 @@
 											<?php echo number_format($piutang->nominal- $piutang->terbayar) ?>
 										</td>
 										<td width="150">
-											<div>
-												<input type="number" name="<?php echo 'nominal'.$no?>" placeholder="0" value="<?php echo $piutang->nominal - $piutang->terbayar  ?>"/>						
-											</div>
+											<?php
+												$sisa_bayar = $pembayaran->nominal -$pembayaran->terbayarkan; 
+												if (($piutang->nominal - $piutang->terbayar) >= $sisa_bayar){
+													$sisa_piutang = $sisa_bayar;
+												} else {
+													$sisa_piutang = $piutang->nominal - $piutang->terbayar;
+												}
+											?>
+											<input type="number" name="<?php echo 'nominal'.$no?>" placeholder="0" value="<?php echo $sisa_piutang  ?>"/>	
 										</td>
 										<td width="100">
 										<input class="btn btn-success" type="submit" name="<?php echo 'btn'.$no ?>" value="Bayar" />
