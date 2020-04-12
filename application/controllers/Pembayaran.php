@@ -78,6 +78,62 @@ class Pembayaran extends CI_Controller
 
     }
 
+    public function bayar_piutang(){
+        $post = $this->input->post();
+        
+        $snomor = "";
+
+        if (isset($post["btn1"])){
+            $snomor = 1;
+        } elseif (isset($post["btn2"])) {
+            $snomor = 2;
+        } elseif (isset($post["btn3"])) {
+            $snomor = 3;
+        } elseif (isset($post["btn4"])) {
+            $snomor = 4;
+        } elseif (isset($post["btn5"])) {
+            $snomor = 5;
+        } elseif (isset($post["btn6"])) {
+            $snomor = 6;
+        } elseif (isset($post["btn7"])) {
+            $snomor = 7;
+        } elseif (isset($post["btn9"])) {
+            $snomor = 8;
+        } elseif (isset($post["btn9"])) {
+            $snomor = 9;
+        }
+
+        $nama_input_pembayaran = "pembayaran_id" . $snomor;
+        $nama_input_piutang = "piutang_id" . $snomor;
+        $nama_input_nominal = "nominal" . $snomor;
+
+        echo $nama_input_pembayaran . ": ";
+        echo $post[$nama_input_pembayaran] . "<br>";
+        
+        echo $nama_input_piutang . ": ";        
+        echo $post[$nama_input_piutang] . "<br>";
+
+        echo $nama_input_nominal . ": ";        
+        echo $post[$nama_input_nominal] . "<br>";
+
+        /*
+        $this->db->trans_begin();
+ 
+        $this->db->query('AN SQL QUERY...');
+        $this->db->query('ANOTHER QUERY...');
+        $this->db->query('AND YET ANOTHER QUERY...');
+        
+        if ($this->db->trans_status() === FALSE)
+        {
+        $this->db->trans_rollback();
+        }
+        else
+        {
+        $this->db->trans_commit();
+        }
+        */
+    }
+
     public function settlement_piutang($pembayaran_id){
         $this->load->model("piutang_model");
 

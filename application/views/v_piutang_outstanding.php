@@ -68,7 +68,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<form action="<?php echo site_url('piutang/index/'); ?>" method="post">
+							<form action="<?php echo site_url('pembayaran/bayar_piutang'); ?>" method="post">
 							
 							<table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
@@ -121,6 +121,9 @@
 													$sisa_piutang = $piutang->nominal - $piutang->terbayar;
 												}
 											?>
+											<input type="hidden" name="<?php echo 'pembayaran_id' . $no?>" value="<?php echo $pembayaran->pembayaran_id?>" />
+											<input type="hidden" name="<?php echo 'piutang_id' . $no?>" value="<?php echo $piutang->piutang_id?>" />
+					
 											<input type="number" name="<?php echo 'nominal'.$no?>" placeholder="0" value="<?php echo $sisa_piutang  ?>"/>	
 										</td>
 										<td width="100">

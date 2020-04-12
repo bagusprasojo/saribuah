@@ -623,3 +623,6 @@ ERROR - 2020-04-12 08:36:31 --> Severity: Notice --> Undefined variable: data xd
 ERROR - 2020-04-12 08:36:31 --> Severity: Notice --> Undefined variable: data xdebug://debug-eval 1
 ERROR - 2020-04-12 08:36:33 --> Severity: Notice --> Undefined index: piutangs xdebug://debug-eval 1
 ERROR - 2020-04-12 08:43:34 --> Severity: Notice --> Undefined variable: no C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 41
+ERROR - 2020-04-12 09:41:54 --> Severity: Notice --> Undefined property: stdClass::$piutang C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 125
+ERROR - 2020-04-12 09:41:54 --> Severity: Notice --> Undefined property: stdClass::$piutang C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 125
+ERROR - 2020-04-12 09:43:12 --> Severity: Notice --> Undefined index: pembeli_id1 C:\xampp\htdocs\saribuah\application\controllers\Pembayaran.php 111
