@@ -74,7 +74,9 @@
 										<td>
 											<?php echo $pembayaran->keterangan ?>
 										</td>
-										<td width="100">
+										<td width="210">
+											<a href="<?php echo site_url('pembayaran/settlement_piutang/'.$pembayaran->pembeli_id) ?>">
+												 Settlement  </a> | 
 											<a href="<?php echo site_url('pembayaran/edit/'.$pembayaran->pembayaran_id) ?>">
 												 Edit </a> | 
 											<a onclick="deleteConfirm('<?php echo site_url('pembayaran/delete/'.$pembayaran->pembayaran_id) ?>')"

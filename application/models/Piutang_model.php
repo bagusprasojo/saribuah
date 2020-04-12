@@ -43,6 +43,15 @@ class Piutang_model extends MY_Model
         ];
     }
 
+    public function piutang_belum_lunas($pembeli_id){
+        $this->db->order_by("no_transaksi", "desc");
+        $this->db->join('pembeli', 'pembeli.pembeli_id = piutang.pembeli_id');
+        $this->db->where("nominal >= terbayar");
+        $this->db->where("piutang.pembeli_id = '" . $pembeli_id . "'");
+		return $query = $this->db->get($this->_table)->result();		
+	
+    }
+
     function data($number,$offset, $first_date, $second_date, $no_transaksilike = null){
         #$this->db->where('DATE(tgl_transaksi) >=',$first_date); 
         #$this->db->where('DATE(tgl_transaksi) <=',$second_date);
