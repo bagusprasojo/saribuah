@@ -34,7 +34,8 @@
 										<th>Tanggal</th>
 										<th>Pembeli</th>
 										<th>Nominal</th>
-										<th>Sudah Terbayar</th>
+										<th>Terbayar</th>
+										<th>Sisa</th>
 										<th>Akan Dibayar</th>
 										<th>Action</th>
 									</tr>
@@ -64,10 +65,12 @@
 										<td align="right">
 											<?php echo number_format($piutang->terbayar) ?>
 										</td>
-										<td>
-											<div class="form-group">
-												<input class="form-control <?php echo form_error('nominal ') ? 'is-invalid':'' ?>"
-												type="number" name="<?php echo 'nominal'.$no?>" placeholder="0" value="<?php echo $piutang->nominal - $piutang->terbayar  ?>"/>						
+										<td align="right">
+											<?php echo number_format($piutang->nominal- $piutang->terbayar) ?>
+										</td>
+										<td width="150">
+											<div>
+												<input type="number" name="<?php echo 'nominal'.$no?>" placeholder="0" value="<?php echo $piutang->nominal - $piutang->terbayar  ?>"/>						
 											</div>
 										</td>
 										<td width="100">

@@ -80,8 +80,8 @@ class Pembayaran extends CI_Controller
 
     public function settlement_piutang($pembayaran_id){
         $this->load->model("piutang_model");
-        
-        $data['piutangs'] = $this->piutang_model->piutang_belum_lunas($pembayaran_id);  
+        $data['pembayaran'] = $this->pembayaran_model->getById($pembayaran_id);
+        $data['piutangs']   = $this->piutang_model->piutang_belum_lunas($pembayaran_id);  
         $this->load->view("v_piutang_outstanding",$data);
     }
 
