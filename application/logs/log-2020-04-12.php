@@ -482,3 +482,59 @@ DEBUG - 2020-04-12 05:50:38 --> UTF-8 Support Enabled
 DEBUG - 2020-04-12 05:50:38 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2020-04-12 05:50:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 DEBUG - 2020-04-12 05:50:38 --> Total execution time: 0.0760
+DEBUG - 2020-04-12 05:59:13 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:13 --> Total execution time: 0.0866
+DEBUG - 2020-04-12 05:59:16 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:16 --> Total execution time: 0.0882
+DEBUG - 2020-04-12 05:59:19 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:19 --> Total execution time: 0.0592
+DEBUG - 2020-04-12 05:59:22 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:22 --> Total execution time: 0.0676
+DEBUG - 2020-04-12 05:59:28 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:28 --> ID : 5e9292206788b<br>no_pembayaran : 0000000002<br>pembeli_id : 5e888c9bbae5f<br>tgl_transaksi : 2020-04-12<br>nominal : 450000<br>keterangan : f<br>
+DEBUG - 2020-04-12 05:59:28 --> New Pembayaran
+DEBUG - 2020-04-12 05:59:28 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:28 --> Total execution time: 0.0664
+DEBUG - 2020-04-12 05:59:34 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:34 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:34 --> Total execution time: 0.1295
+DEBUG - 2020-04-12 05:59:37 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:38 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:38 --> Total execution time: 0.0696
+DEBUG - 2020-04-12 05:59:41 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:41 --> Total execution time: 0.0558
+DEBUG - 2020-04-12 05:59:45 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:45 --> Total execution time: 0.0570
+DEBUG - 2020-04-12 05:59:51 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:51 --> ID : 5e929237c9b41<br>no_pembayaran : 0000000001<br>pembeli_id : 5e888c9bbae5f<br>tgl_transaksi : 2020-04-12<br>nominal : 2300000<br>keterangan : 9<br>
+DEBUG - 2020-04-12 05:59:51 --> New Pembayaran
+DEBUG - 2020-04-12 05:59:52 --> UTF-8 Support Enabled
+DEBUG - 2020-04-12 05:59:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-04-12 05:59:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-04-12 05:59:52 --> Total execution time: 0.0633
