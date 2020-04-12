@@ -121,6 +121,10 @@
 													$sisa_piutang = $piutang->nominal - $piutang->terbayar;
 												}
 											?>
+											<input type="hidden" name="<?php echo 'tgl_transaksi' . $no?>" value="<?php echo date("Y-m-d")?>" />
+											<input type="hidden" name="<?php echo 'no_transaksi' . $no?>" value="Otomatis" />
+											<input type="hidden" name="<?php echo 'settlement_id' . $no?>" value="" />
+											<input type="hidden" name="<?php echo 'no_transaksi' . $no?>" value="Otomatis by System" />
 											<input type="hidden" name="<?php echo 'pembayaran_id' . $no?>" value="<?php echo $pembayaran->pembayaran_id?>" />
 											<input type="hidden" name="<?php echo 'piutang_id' . $no?>" value="<?php echo $piutang->piutang_id?>" />
 					

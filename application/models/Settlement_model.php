@@ -50,10 +50,8 @@ class Piutang_model extends MY_Model
    
     public function save()
     {
-        $post = $this->input->post();
-        $id = $post["piutang_id"];
-
-        $post = $this->input->post();
+        $post   = $this->input->post();
+        $snomor = "";        
                 
         if (isset($post["btn1"])){
             $snomor = 1;
@@ -75,10 +73,8 @@ class Piutang_model extends MY_Model
             $snomor = 9;
         }
 
-        $snomor = "";
-
-        $id = $post["settlement_id"];
-
+        $id = $post["settlement_id". $snomor];
+        
 		if ($id ==""){
             $this->settlement_id    = uniqid();
             $this->no_transaksi     = $this->GetNextNumber();
@@ -86,22 +82,16 @@ class Piutang_model extends MY_Model
 			$is_new = true;
 		} else {
             $is_new = false;
-            $this->piutang_id   = $id;
-            $this->no_transaksi = $post["no_transaksi"];
-            $this->username 	= $post["username"];    
+            $this->settlement_id    = $id;
+            $this->no_transaksi     = $post["no_transaksi"];
+            $this->username 	    = $post["username"];    
         }
 
-        $this->piutang_id 	    = $post["piutang_id"];
-        
-		$this->tgl_transaksi 	= $post["tgl_transaksi"];
-        $this->tgl_jatuh_tempo 	= $post["tgl_transaksi"];
-        $this->nominal          = $post["nominal"];
-        $this->keterangan       = trim($post["keterangan"]);
-        $this->terbayar         = 0;
-        
-         
-
-         log_message('Debug', $piutangs);
+        $this->piutang_id 	    = $post["piutang_id". $snomor];        
+		$this->tgl_transaksi 	= $post["tgl_transaksi". $snomor];
+        $this->pembayaran_id 	= $post["pembayaran_id". $snomor];
+        $this->nominal          = $post["nominal". $snomor];
+        $this->keterangan       = trim($post["keterangan". $snomor]);
 
 		if ($is_new == true) {
             log_message('Debug', "New Piutang");
