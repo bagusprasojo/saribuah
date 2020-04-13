@@ -626,3 +626,11 @@ ERROR - 2020-04-12 08:43:34 --> Severity: Notice --> Undefined variable: no C:\x
 ERROR - 2020-04-12 09:41:54 --> Severity: Notice --> Undefined property: stdClass::$piutang C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 125
 ERROR - 2020-04-12 09:41:54 --> Severity: Notice --> Undefined property: stdClass::$piutang C:\xampp\htdocs\saribuah\application\views\v_piutang_outstanding.php 125
 ERROR - 2020-04-12 09:43:12 --> Severity: Notice --> Undefined index: pembeli_id1 C:\xampp\htdocs\saribuah\application\controllers\Pembayaran.php 111
+ERROR - 2020-04-12 10:56:40 --> Severity: error --> Exception: syntax error, unexpected '->' (T_OBJECT_OPERATOR) C:\xampp\htdocs\saribuah\application\controllers\Settlement.php 81
+ERROR - 2020-04-12 10:59:22 --> Severity: error --> Exception: syntax error, unexpected '->' (T_OBJECT_OPERATOR) C:\xampp\htdocs\saribuah\application\controllers\Settlement.php 81
+ERROR - 2020-04-12 11:00:39 --> Severity: Notice --> Undefined property: Settlement::$user_model C:\xampp\htdocs\saribuah\application\controllers\Settlement.php 13
+ERROR - 2020-04-12 11:00:39 --> Severity: error --> Exception: Call to a member function isNotLogin() on null C:\xampp\htdocs\saribuah\application\controllers\Settlement.php 13
+ERROR - 2020-04-12 11:02:13 --> Severity: Notice --> Undefined property: Settlement::$user_model C:\xampp\htdocs\saribuah\application\controllers\Settlement.php 13
+ERROR - 2020-04-12 11:02:14 --> Severity: error --> Exception: Call to a member function isNotLogin() on null C:\xampp\htdocs\saribuah\application\controllers\Settlement.php 13
+ERROR - 2020-04-12 11:03:54 --> Query error: Table 'saribuah.settlement' doesn't exist - Invalid query: select max(no_transaksi) as nomor from settlement
+ERROR - 2020-04-12 11:11:40 --> Severity: Notice --> Undefined index: keterangan1 C:\xampp\htdocs\saribuah\application\models\Settlement_model.php 94

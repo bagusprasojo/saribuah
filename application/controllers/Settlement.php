@@ -8,13 +8,14 @@ class Settlement extends CI_Controller
     {
         parent::__construct();
         $_SESSION['halaman_terakhir'] = "";
-        
-        $this->load->model("settlement_model");
+                
+        $this->load->model("user_model");
         if($this->user_model->isNotLogin()) {
             $data['nama_view'] = "settlement";
             $this->load->view("v_login.php", $data);
         }
         
+        $this->load->model("settlement_model");
         $this->load->library('form_validation');
     }
 
@@ -78,10 +79,8 @@ class Settlement extends CI_Controller
     }
 
     public function add(){
-        if ($this>settlement->save()) {
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect('pembayaran');
-            // return true;
+        if ($this->settlement_model->save()) {
+            //redirect(site_url('pembayaran/settlement_piutang/'.$pembayaran->pembayaran_id));
         } 
         
     }

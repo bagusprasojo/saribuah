@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Piutang_model extends MY_Model
+class Settlement_model extends MY_Model
 {
     public $settlement_id;
     public $piutang_id;
@@ -93,18 +93,98 @@ class Piutang_model extends MY_Model
         $this->nominal          = $post["nominal". $snomor];
         $this->keterangan       = trim($post["keterangan". $snomor]);
 
-		if ($is_new == true) {
-            log_message('Debug', "New Piutang");
-			return $this->db->insert($this->_table, $this);
+        echo $this->nominal;
+
+        $this->db->trans_begin();
+        if ($is_new == true) {
+            log_message('Debug', "New Settlement");
+			$this->db->insert($this->_table, $this);
 		} else {
-            log_message('Debug', "Update Piutang");
-			return $this->db->update($this->_table, $this, array('piutang_id' => $id));
-		}
+            log_message('Debug', "Update Settlement");
+            $this->db->update($this->_table, $this, array('settlement_id' => $id));
+        }
+
+        // Update piutang terbayar
+        $terbayar = $this->GetNominalPembayaranPiutang($this->piutang_id);
+        $sql = "update piutang set terbayar =  " . $terbayar . 
+               " where piutang_id = '". $this->piutang_id . "'";
+
+        $this->db->query($sql);
+
+        // Update pembayaran terbayarkan
+        $terbayarkan = $this->GetNominalTerbayarkan($this->pembayaran_id);
+        $sql = "update pembayaran set terbayarkan = " . $this->terbayarkan . 
+               " where pembayaran_id = '". $this->pembayaran_id . "'";
+
+        $this->db->query($sql);
+
+        
+
+        if ($this->db->trans_status() === FALSE)
+        {
+        $this->db->trans_rollback();
+        }
+        else
+        {
+        $this->db->trans_commit();
+        }
     }
 
-    
+    public function GetNominalPembayaranPiutang($piutang_id){
+        $sql =  "select SUM(nominal) as Nominal " .
+                " from settlement " .
+                " where piutang_id = '" . $piutang_id . "'";
+
+        $nominal = 0;
+        $query = $this->db->get($sql);
+        if ($query){
+            $nominal = $query->nominal;
+        }
+
+        return $nominal;
+    }
+
+    public function GetNominalTerbayarkan($pembayaran_id){
+        $sql =  "select SUM(nominal) as Nominal " .
+                " from settlement " .
+                " where pembayaran_id = '" . $pembayaran_id . "'";
+
+        $nominal = 0;
+        $query = $this->db->get($sql);
+        if ($query){
+            $nominal = $query->nominal;
+        }
+
+        return $nominal;
+    }
+
     public function delete($id)
     {
-        return $this->db->delete($this->_table, array("settlement_id" => $id));
+        $settlement = $this->getById($id);
+
+        $this->db->trans_begin();        
+        $this->db->delete($this->_table, array("settlement_id" => $id));
+        // Update piutang terbayar
+        $terbayar = $this->GetNominalPembayaranPiutang($settlement->piutang_id);
+        $sql = "update piutang set terbayar =  " . $terbayar . 
+               " where piutang_id = '". $settlement->piutang_id . "'";
+
+        $this->db->query($sql);
+
+        // Update pembayaran terbayarkan
+        $terbayarkan = $this->GetNominalTerbayarkan($settlement->pembayaran_id);
+        $sql = "update pembayaran set terbayarkan = " . $settlement->terbayarkan . 
+               " where pembayaran_id = '". ->pembayaran_id . "'";
+
+        $this->db->query($sql);
+
+        if ($this->db->trans_status() === FALSE)
+        {
+        $this->db->trans_rollback();
+        }
+        else
+        {
+        $this->db->trans_commit();
+        }
     }    
 }

@@ -68,7 +68,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<form action="<?php echo site_url('pembayaran/bayar_piutang'); ?>" method="post">
+							<form action="<?php echo site_url('settlement/add'); ?>" method="post">
 							
 							<table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
@@ -124,7 +124,7 @@
 											<input type="hidden" name="<?php echo 'tgl_transaksi' . $no?>" value="<?php echo date("Y-m-d")?>" />
 											<input type="hidden" name="<?php echo 'no_transaksi' . $no?>" value="Otomatis" />
 											<input type="hidden" name="<?php echo 'settlement_id' . $no?>" value="" />
-											<input type="hidden" name="<?php echo 'no_transaksi' . $no?>" value="Otomatis by System" />
+											<input type="hidden" name="<?php echo 'keterangan' . $no?>" value="Otomatis by System" />
 											<input type="hidden" name="<?php echo 'pembayaran_id' . $no?>" value="<?php echo $pembayaran->pembayaran_id?>" />
 											<input type="hidden" name="<?php echo 'piutang_id' . $no?>" value="<?php echo $piutang->piutang_id?>" />
 					
