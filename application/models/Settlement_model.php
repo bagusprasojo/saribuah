@@ -47,12 +47,8 @@ class Settlement_model extends MY_Model
         return $this->db->get_where($this->_table, ["settlement_id" => $id])->row();
     }
 
-   
-    public function save()
-    {
-        $post   = $this->input->post();
-        $snomor = "";        
-                
+    private function GetNomorBtnTerclick($post){
+        $snomor = "";
         if (isset($post["btn1"])){
             $snomor = 1;
         } elseif (isset($post["btn2"])) {
@@ -72,6 +68,14 @@ class Settlement_model extends MY_Model
         } elseif (isset($post["btn9"])) {
             $snomor = 9;
         }
+
+        return $snomor;
+    }
+
+    public function save(&$return_pembayaran_id)
+    {
+        $post   = $this->input->post();
+        $snomor = $this->GetNomorBtnTerclick($post);
 
         $id = $post["settlement_id". $snomor];
         
@@ -93,7 +97,7 @@ class Settlement_model extends MY_Model
         $this->nominal          = $post["nominal". $snomor];
         $this->keterangan       = trim($post["keterangan". $snomor]);
 
-        echo $this->nominal;
+        // echo $this->nominal;
 
         $this->db->trans_begin();
         if ($is_new == true) {
@@ -113,7 +117,7 @@ class Settlement_model extends MY_Model
 
         // Update pembayaran terbayarkan
         $terbayarkan = $this->GetNominalTerbayarkan($this->pembayaran_id);
-        $sql = "update pembayaran set terbayarkan = " . $this->terbayarkan . 
+        $sql = "update pembayaran set terbayarkan = " . $terbayarkan . 
                " where pembayaran_id = '". $this->pembayaran_id . "'";
 
         $this->db->query($sql);
@@ -126,33 +130,39 @@ class Settlement_model extends MY_Model
         }
         else
         {
-        $this->db->trans_commit();
+            $this->db->trans_commit();
+            $return_pembayaran_id = $this->pembayaran_id; 
+            return true;
         }
     }
 
     public function GetNominalPembayaranPiutang($piutang_id){
-        $sql =  "select SUM(nominal) as Nominal " .
-                " from settlement " .
-                " where piutang_id = '" . $piutang_id . "'";
+        $sql = "select SUM(nominal) as xxx from settlement where piutang_id = ?";       
 
-        $nominal = 0;
-        $query = $this->db->get($sql);
-        if ($query){
-            $nominal = $query->nominal;
+        $querys = $this->db->query($sql, [$piutang_id])->result();
+        foreach ($querys as $query):
+            $nominal = $query->xxx;
+        endforeach;
+
+        if ($nominal == null){
+            $nominal = 0;
         }
 
         return $nominal;
     }
 
     public function GetNominalTerbayarkan($pembayaran_id){
-        $sql =  "select SUM(nominal) as Nominal " .
+        $sql =  "select SUM(nominal) as xxx " .
                 " from settlement " .
-                " where pembayaran_id = '" . $pembayaran_id . "'";
+                " where pembayaran_id = ?";
 
-        $nominal = 0;
-        $query = $this->db->get($sql);
-        if ($query){
-            $nominal = $query->nominal;
+        $querys = $this->db->query($sql, [$pembayaran_id])->result();
+        foreach ($querys as $query):
+            $nominal = $query->xxx;
+        endforeach;
+        
+        if ($nominal == null){
+            $nominal = 0;
         }
 
         return $nominal;
@@ -174,7 +184,7 @@ class Settlement_model extends MY_Model
         // Update pembayaran terbayarkan
         $terbayarkan = $this->GetNominalTerbayarkan($settlement->pembayaran_id);
         $sql = "update pembayaran set terbayarkan = " . $settlement->terbayarkan . 
-               " where pembayaran_id = '". ->pembayaran_id . "'";
+               " where pembayaran_id = '". $settlement->pembayaran_id . "'";
 
         $this->db->query($sql);
 

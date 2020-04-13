@@ -135,10 +135,19 @@ class Pembayaran extends CI_Controller
     }
 
     public function settlement_piutang($pembayaran_id){
+        if ($pembayaran_id == ""){
+            redirect(site_url('pembayaran'));
+        }
+
         $this->load->model("piutang_model");
 
         $pembayaran         = $this->pembayaran_model;
         $data['pembayaran'] = $pembayaran->getById($pembayaran_id);
+
+        if ($data['pembayaran'] == null){
+            redirect(site_url('pembayaran'));
+        }
+
         $data['piutangs']   = $this->piutang_model->piutang_belum_lunas($data['pembayaran']->pembeli_id);  
         $this->load->view("v_piutang_outstanding",$data);
     }
