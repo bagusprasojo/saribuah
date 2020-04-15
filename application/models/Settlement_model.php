@@ -79,6 +79,7 @@ class Settlement_model extends MY_Model
 
         $id = $post["settlement_id". $snomor];
         
+
 		if ($id ==""){
             $this->settlement_id    = uniqid();
             $this->no_transaksi     = $this->GetNextNumber();
@@ -96,8 +97,6 @@ class Settlement_model extends MY_Model
         $this->pembayaran_id 	= $post["pembayaran_id". $snomor];
         $this->nominal          = $post["nominal". $snomor];
         $this->keterangan       = trim($post["keterangan". $snomor]);
-
-        // echo $this->nominal;
 
         $this->db->trans_begin();
         if ($is_new == true) {
