@@ -13,6 +13,7 @@
 			<a href="<?php echo site_url('pembeli') ?>" class="list-group-item">Data Pembeli</a>
 			<a href="<?php echo site_url('piutang') ?>" class="list-group-item">Data Piutang</a>
 			<a href="<?php echo site_url('pembayaran') ?>" class="list-group-item">Input Pembayaran</a>
+			<a href="<?php echo site_url('settlement') ?>" class="list-group-item">Settlement Pembayaran</a>
 			<a href="#" class="list-group-item">Laporan</a>
 			<a href="#" class="list-group-item">Status</a>	
 		<?php

@@ -17,6 +17,8 @@ class Settlement_model extends MY_Model
         $this->_table ="settlement";
     }
 
+    
+
     public function rules()
     {
         return [
@@ -165,6 +167,38 @@ class Settlement_model extends MY_Model
         }
 
         return $nominal;
+    }
+
+    function data($number,$offset, $first_date, $second_date, $no_transaksilike = null){
+        #$this->db->where('DATE(tgl_transaksi) >=',$first_date); 
+        #$this->db->where('DATE(tgl_transaksi) <=',$second_date);
+
+        if (!empty($no_transaksilike)) {
+			$this->db->like($this->_table . '.no_transaksi', $no_transaksilike);
+		}
+        
+        $this->db->order_by($this->_table . ".no_transaksi", "desc");
+        $this->db->select($this->_table . ".*,piutang.no_transaksi as no_piutang, pembayaran.no_pembayaran,  pembeli.nama as nama_pembeli");
+        $this->db->join('piutang', 'piutang.piutang_id = settlement.piutang_id');
+        $this->db->join('pembayaran', 'pembayaran.pembayaran_id = settlement.pembayaran_id');
+		$this->db->join('pembeli', 'pembayaran.pembeli_id = pembeli.pembeli_id');
+		return $query = $this->db->get($this->_table,$number,$offset)->result();		
+	}
+ 
+	function jumlah_data($first_date, $second_date,$no_transaksilike = null ){
+        //$this->db->where('DATE(tgl_transaksi) >=',$first_date); 
+        //$this->db->where('DATE(tgl_transaksi) <=',$second_date);
+
+        if (!empty($no_transaksilike)) {
+			$this->db->like($this->_table . '.no_transaksi', $no_transaksilike);
+		}
+        
+        $this->db->select($this->_table . ".*,piutang.no_transaksi as no_piutang, pembayaran.no_pembayaran,  pembeli.nama as nama_pembeli");
+        $this->db->join('piutang', 'piutang.piutang_id = settlement.piutang_id');
+        $this->db->join('pembayaran', 'pembayaran.pembayaran_id = settlement.pembayaran_id');
+		$this->db->join('pembeli', 'pembayaran.pembeli_id = pembeli.pembeli_id');
+        
+        return $this->db->get($this->_table)->num_rows();
     }
 
     public function delete($id)

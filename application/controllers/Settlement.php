@@ -22,11 +22,11 @@ class Settlement extends CI_Controller
     public function index()
     {
         if (isset($_POST['btn_submit'])) {
-			$data['nomor_pembayaran'] = $this->input->post('cari');
-			$this->session->set_userdata('sess_nomor_pembayaran', $data['nomor_pembayaran']);
+			$data['nomor_settlement'] = $this->input->post('cari');
+			$this->session->set_userdata('sess_nomor_settlement', $data['nomor_settlement']);
 		}
 		else {
-			$data['nomor_pembayaran'] = $this->session->userdata('sess_nomor_pembayaran');
+			$data['nomor_settlement'] = $this->session->userdata('sess_nomor_settlement');
 		}
         
         $this->load->library('pagination');
@@ -46,9 +46,9 @@ class Settlement extends CI_Controller
         //echo "from : " . $from . "<br>";
         //echo "tgl1 : " . $tgl1 . "<br>";
 
-        $jumlah_data = $this->pembayaran_model->jumlah_data($tgl1, $tgl2, $data['nomor_pembayaran']);
+        $jumlah_data = $this->settlement_model->jumlah_data($tgl1, $tgl2, $data['nomor_settlement']);
 
-        $config['base_url']     = base_url().'index.php/pembayaran/index/';
+        $config['base_url']     = base_url().'index.php/settlement/index/';
 		$config['total_rows']   = $jumlah_data;
         $config['per_page']     = 10;
 
@@ -72,9 +72,9 @@ class Settlement extends CI_Controller
         
         $this->pagination->initialize($config);		
         
-        $data['pembayarans'] = $this->pembayaran_model->data($config['per_page'],$from,$tgl1,$tgl2, $data['nomor_pembayaran']);
+        $data['settlements'] = $this->settlement_model->data($config['per_page'],$from,$tgl1,$tgl2, $data['nomor_settlement']);
         $data['pagination'] = $this->pagination->create_links();
-        $this->load->view("v_pembayaran_list", $data);
+        $this->load->view("v_settlement_list", $data);
 
     }
 
