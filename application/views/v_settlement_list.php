@@ -75,7 +75,7 @@
 											<?php echo $settlement->keterangan ?>
 										</td>
 										<td width="100">
-											<a onclick="deleteConfirm('<?php echo site_url('pembayaran/delete/'.$settlement->pembayaran_id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('settlement/delete/'.$settlement->pembayaran_id) ?>')"
 												href="#!" > Hapus</a>
 										</td>
 									</tr>
