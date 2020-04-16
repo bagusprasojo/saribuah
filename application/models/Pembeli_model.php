@@ -46,7 +46,7 @@ class Pembeli_model extends CI_Model
         
         $this->db->select("pembeli.pembeli_id, nama, kelompok, alamat, telp, email,sum(nominal - terbayar) as sisa_piutang");
         $this->db->order_by("nama", "asc");
-        $this->db->join('piutang', 'pembeli.pembeli_id = piutang.pembeli_id', 'left');
+        $this->db->join('piutang', 'pembeli.pembeli_id = piutang.pembeli_id and piutang.nominal > piutang.terbayar', 'left');
         $this->db->group_by(array("pembeli.pembeli_id", "nama", "kelompok", "alamat", "telp", "email"));
 		return $query = $this->db->get($this->_table, $number,$offset)->result();		
 	}
