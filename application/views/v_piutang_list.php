@@ -77,11 +77,14 @@
 										</td>
 										<td>
 											<?php echo $piutang->username ?>
-										</td><td width="150">
+										</td>
+										<td width="150">
+											<?php if ($piutang->terbayar <= 0){ ?>
 											<a href="<?php echo site_url('piutang/edit/'.$piutang->piutang_id) ?> "
 											class="btn btn-primary"> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('piutang/delete/'.$piutang->piutang_id) ?>')"
 												href="#!" class="btn btn-danger">Hapus</a>
+											<?php }?>
 										</td>
 									</tr>
 									<?php endforeach; ?>

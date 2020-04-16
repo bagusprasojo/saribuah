@@ -77,10 +77,14 @@
 										<td width="250">
 											<a class="btn btn-primary" href="<?php echo site_url('pembayaran/settlement_piutang/'.$pembayaran->pembayaran_id) ?>">
 												 Settlement  </a> 
+
+											<?php if ($pembayaran->terbayarkan <= 0){?>
 											<a class="btn btn-primary" href="<?php echo site_url('pembayaran/edit/'.$pembayaran->pembayaran_id) ?>">
 												 Edit </a>
 											<a onclick="deleteConfirm('<?php echo site_url('pembayaran/delete/'.$pembayaran->pembayaran_id) ?>')"
 												href="#!" class="btn btn-danger"> Hapus</a>
+
+											<?php } ?>
 										</td>
 									</tr>
 									<?php endforeach; ?>
