@@ -38,6 +38,7 @@
 										<th>Alamat</th>
 										<th>Telp</th>
 										<th>Email</th>
+										<th>Sisa Piutang</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -54,7 +55,7 @@
 										<td width="150">
 											<?php echo $pembeli->nama ?>
 										</td>
-										<td width="150">
+										<td width="130">
 											<?php echo $pembeli->kelompok ?>
 										</td>
 										<td>
@@ -65,6 +66,10 @@
 										</td>
 										<td>
 											<?php echo $pembeli->email ?>
+										</td>
+										
+										<td align="right" width="110">
+											<?php echo number_format($pembeli->sisa_piutang) ?>
 										</td>
 										
 										<td width="150">
