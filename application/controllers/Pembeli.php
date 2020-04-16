@@ -31,7 +31,7 @@ class Pembeli extends CI_Controller
 		$this->load->library('pagination');
 		$config['base_url']     = base_url().'index.php/pembeli/index/';
 		$config['total_rows']   = $jumlah_data;
-        $config['per_page']     = 5;
+        $config['per_page']     = 25;
 
         $config['next_link'] = 'Selanjutnya';
         $config['prev_link'] = 'Sebelumnya';
