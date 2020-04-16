@@ -77,11 +77,11 @@
 										</td>
 										<td>
 											<?php echo $piutang->username ?>
-										</td><td width="100">
-											<a href="<?php echo site_url('piutang/edit/'.$piutang->piutang_id) ?>"
-												> Edit</a> |
+										</td><td width="150">
+											<a href="<?php echo site_url('piutang/edit/'.$piutang->piutang_id) ?> "
+											class="btn btn-primary"> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('piutang/delete/'.$piutang->piutang_id) ?>')"
-												href="#!" >Hapus</a>
+												href="#!" class="btn btn-danger">Hapus</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>
@@ -93,7 +93,16 @@
 							<?php 
 							echo $pagination;
 							?>
+
+							
 						</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="card">
+					<div class="card-header"><h5>Total Sisa Piutang</h5></div>
+					<div class="card-body"><h6><?php echo "Rp ". number_format($total_sisa_piutang) ?></h6></div>
+					</div>
 				</div>
       </div>
     </div>

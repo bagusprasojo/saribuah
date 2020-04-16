@@ -204,7 +204,7 @@ class Settlement_model extends MY_Model
     public function delete($id)
     {
         $settlement = $this->getById($id);
-
+        
         $this->db->trans_begin();        
         $this->db->delete($this->_table, array("settlement_id" => $id));
         // Update piutang terbayar
@@ -216,7 +216,7 @@ class Settlement_model extends MY_Model
 
         // Update pembayaran terbayarkan
         $terbayarkan = $this->GetNominalTerbayarkan($settlement->pembayaran_id);
-        $sql = "update pembayaran set terbayarkan = " . $settlement->terbayarkan . 
+        $sql = "update pembayaran set terbayarkan = " . $terbayarkan . 
                " where pembayaran_id = '". $settlement->pembayaran_id . "'";
 
         $this->db->query($sql);
@@ -227,7 +227,8 @@ class Settlement_model extends MY_Model
         }
         else
         {
-        $this->db->trans_commit();
+            $this->db->trans_commit();
+            return true;
         }
     }    
 }

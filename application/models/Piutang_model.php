@@ -52,6 +52,19 @@ class Piutang_model extends MY_Model
 	
     }
 
+    public function get_total_piutang_belum_lunas(){
+        $sql = "select sum(nominal - terbayar) as nominal from piutang where nominal > terbayar";
+        $query = $this->db->query($sql)->result();
+        
+        $sisa = 0;
+        foreach ($query as $row) {
+            $sisa = $row->nominal;
+        }
+
+        return $sisa;
+        
+    }
+
     function data($number,$offset, $first_date, $second_date, $no_transaksilike = null){
         #$this->db->where('DATE(tgl_transaksi) >=',$first_date); 
         #$this->db->where('DATE(tgl_transaksi) <=',$second_date);

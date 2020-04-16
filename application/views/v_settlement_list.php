@@ -75,8 +75,8 @@
 											<?php echo $settlement->keterangan ?>
 										</td>
 										<td width="100">
-											<a onclick="deleteConfirm('<?php echo site_url('settlement/delete/'.$settlement->pembayaran_id) ?>')"
-												href="#!" > Hapus</a>
+											<a onclick="deleteConfirm('<?php echo site_url('settlement/delete/'.$settlement->settlement_id) ?>')"
+												href="#!" class="btn btn-danger" > Hapus</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>

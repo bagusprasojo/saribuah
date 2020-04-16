@@ -72,6 +72,7 @@ class Piutang extends CI_Controller
         
         $data['piutangs'] = $this->piutang_model->data($config['per_page'],$from,$tgl1,$tgl2, $data['nomor_transaksi']);
         $data['pagination'] = $this->pagination->create_links();
+        $data['total_sisa_piutang'] = $this->piutang_model->get_total_piutang_belum_lunas();
         $this->load->view("v_piutang_list", $data);
 
     }

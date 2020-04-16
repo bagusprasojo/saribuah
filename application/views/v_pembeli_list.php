@@ -67,11 +67,11 @@
 											<?php echo $pembeli->email ?>
 										</td>
 										
-										<td width="140">
-											<a href="<?php echo site_url('pembeli/edit/'.$pembeli->pembeli_id) ?>">
-												Edit </a>|
+										<td width="150">
+											<a class="btn btn-primary" href="<?php echo site_url('pembeli/edit/'.$pembeli->pembeli_id) ?>">
+												Edit </a>
 											<a onclick="deleteConfirm('<?php echo site_url('pembeli/delete/'.$pembeli->pembeli_id) ?>')"
-												href="#!" >Hapus</a>
+												href="#!" class="btn btn-danger">Hapus</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>

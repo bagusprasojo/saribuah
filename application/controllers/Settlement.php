@@ -91,7 +91,7 @@ class Settlement extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->settlement_model->delete($id)) {
-            redirect(site_url('pembayaran'));
+            redirect(site_url('settlement'));
         }
     }
 }

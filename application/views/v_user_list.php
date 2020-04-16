@@ -57,10 +57,10 @@
 										</td>
 										
 										<td width="250">
-											<a href="<?php echo site_url('user/edit/'.$user->user_id) ?>"
+											<a class="btn btn-primary" href="<?php echo site_url('user/edit/'.$user->user_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('user/delete/'.$user->user_id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											 href="#!" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>
