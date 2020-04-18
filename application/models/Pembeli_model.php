@@ -38,6 +38,34 @@ class Pembeli_model extends CI_Model
         $this->db->order_by("nama", "asc");
         return $this->db->get($this->_table)->result();
     }
+
+    public function getSaldoAwalPiutang($pembeli_id, $periode){
+        $sql =  "select sum(nominal - terbayar) as nominal from piutang " .
+                " where nominal > terbayar " .
+                " and pembeli_id = '" . $pembeli_id . "'".
+                " and tgl_transaksi < '" . $periode . "'";
+
+        $query = $this->db->query($sql)->result();
+        
+        $saldo = 0;
+        foreach ($query as $row) {
+            $saldo = $saldo + $row->nominal;
+        }
+
+        return $saldo;               
+    }
+
+    public function getDataPiutang($pembeli_id, $periode1,$periode2 ){
+        $sql =  "select * from piutang " .
+                " where nominal > terbayar " .
+                " and pembeli_id = '" . $pembeli_id . "'".
+                " and tgl_transaksi between '" . $periode1 . "' and '" . $periode2 . "'";
+
+        return $this->db->query($sql)->result();
+        
+                       
+    }
+
     
     function data($number,$offset, $namalike = null){
         if (!empty($namalike)) {

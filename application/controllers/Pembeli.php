@@ -96,6 +96,7 @@ class Pembeli extends CI_Controller
         $this->load->view("v_pembeli_input", $data);
     }
 
+    
     public function delete($id=null)
     {
         if (!isset($id)) show_404();
