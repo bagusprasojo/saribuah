@@ -1,7 +1,7 @@
 <?php
 
 $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-$pdf->SetTitle('Total Pembayaran');
+$pdf->SetTitle('Total Piutang');
 $pdf->SetHeaderMargin(30);
 $pdf->SetTopMargin(20);
 $pdf->setFooterMargin(20);
@@ -15,7 +15,7 @@ $pdf->SetFont('helvetica', 'B', 20);
 // add a page
 $pdf->AddPage();
 
-$pdf->Write(0, 'Total Pembayaran', '', 0, 'L', true, 0, false, false, 0);
+$pdf->Write(0, 'Total Piutang', '', 0, 'L', true, 0, false, false, 0);
 
 $pdf->SetFont('helvetica', '', 11);
 
