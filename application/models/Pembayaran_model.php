@@ -38,6 +38,17 @@ class Pembayaran_model extends MY_Model
         ];
     }
 
+    public function pembayaran_per_periode($periode1, $periode2){
+        $this->db->order_by("pembayaran.no_pembayaran", "asc");
+        $this->db->select($this->_table . ".*,pembeli.nama as nama_pembeli");
+        $this->db->where('pembayaran.tgl_transaksi >=', $periode1);
+        $this->db->where('pembayaran.tgl_transaksi <=', $periode2);
+        //$this->db->where("pembayaran.tgl_transaksi between $periode1 and $periode2");
+        $this->db->join('pembeli', 'pembeli.pembeli_id = pembayaran.pembeli_id');
+        
+        return $query = $this->db->get($this->_table)->result();
+    }
+
     function data($number,$offset, $first_date, $second_date, $no_pembayaranlike = null){
         #$this->db->where('DATE(tgl_transaksi) >=',$first_date); 
         #$this->db->where('DATE(tgl_transaksi) <=',$second_date);

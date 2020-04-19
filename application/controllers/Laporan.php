@@ -22,11 +22,17 @@ class Laporan extends CI_Controller
 
         if ($post){
             $periode1       = $post["periode1"];
-            $periode1       = $post["periode2"];
-            $pembeli_id     = $post["pembeli_id"];
+            $periode2       = $post["periode2"];
 
-            $this->load->view("v_tagihan.php");
+            $this->load->model("pembayaran_model");
+            
+            $data['pembayarans']    = $this->pembayaran_model->pembayaran_per_periode($periode1, $periode2);
+            $data['periode1']       = $periode1;
+            $data['periode2']       = $periode2;
+             
+             $this->load->view("v_pembayaran_per_periode_pdf.php", $data);
         }
+
         $this->load->view("v_pembayaran_per_periode.php");
     }
 
