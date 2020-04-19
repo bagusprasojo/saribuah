@@ -36,6 +36,13 @@ class Laporan extends CI_Controller
         $this->load->view("v_pembayaran_per_periode.php");
     }
 
+    public function totalPiutang(){
+        $this->load->model("piutang_model");
+            
+        $data['piutangs'] = $this->piutang_model->getListTotalPiutang();
+        $this->load->view("v_total_piutang_pdf.php", $data);
+    }
+
     public function piutang_per_periode(){
         $post = $this->input->post();
 

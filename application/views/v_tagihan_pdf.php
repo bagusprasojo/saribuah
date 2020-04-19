@@ -22,7 +22,7 @@ $pdf->SetFont('helvetica', '', 11);
 // -----------------------------------------------------------------------------
 
 $html = '<p></p>' . 
-        '<table border="0">' .
+        '<table border="0" width="1000">' .
         '<tr><td style="width:50">Periode</td><td width="10">:</td><td>' . $periode1 . ' s.d. ' . $periode2 . '  </td></tr>' .  
         '<tr><td>Nama</td><td>:</td><td>' . $pembeli->nama . '</td></tr>' .  
         '<tr><td>Alamat</td><td>:</td><td>' . $pembeli->alamat . '</td></tr>' .  
@@ -39,8 +39,8 @@ foreach ($piutangs as $piutang):
     $total = $total + ($piutang->nominal - $piutang->terbayar); 
 endforeach;
 
-$html = '<p></p>' . 
-        '<table cellspacing="0" cellpadding="2" width="100%" border="1">' .
+$html = '<br>' . 
+        '<table cellspacing="0" cellpadding="3" width="100%" border="1">' .
         '<tr align="center"><th style="width:30">No</th><th width="100">No Transaksi</th><th width="80">Tanggal</th><th width="220">Keterangan</th><th>Nominal</th></tr>' .
         '<tr><td align="right" style="width:30">1</td><td>Saldo Awal</td><td>' . $periode1 . '</td><td>-</td><td align="right">' . number_format($saldoawal) . '</td></tr>' .
         $td .

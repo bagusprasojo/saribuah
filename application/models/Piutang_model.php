@@ -52,6 +52,19 @@ class Piutang_model extends MY_Model
 	
     }
 
+    public function getListTotalPiutang(){
+        $sql =  "select b.nama  , b.alamat, sum(a.nominal - a.terbayar) as piutang " .
+                " from piutang a " .
+                " INNER JOIN pembeli b on a.pembeli_id = b.pembeli_id " .
+                " where nominal > terbayar " .
+                " GROUP BY b.nama, b.alamat " .
+                " ORDER BY b.nama";
+
+        $query = $this->db->query($sql)->result();
+        return $query;
+        
+    }
+
     public function get_total_piutang_belum_lunas(){
         $sql = "select sum(nominal - terbayar) as nominal from piutang where nominal > terbayar";
         $query = $this->db->query($sql)->result();
