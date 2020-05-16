@@ -38,6 +38,34 @@ class Pembayaran_model extends MY_Model
         ];
     }
 
+    public function total_pembayaran_hari_ini(){
+        $sql = "select  SUM(nominal) as nominal from pembayaran" . 
+               " WHERE CAST(tgl_transaksi AS DATE) = CURDATE()";
+
+        $query = $this->db->query($sql)->result();
+
+        $jumlah = 0;
+        foreach ($query as $row) {
+            $jumlah = $row->nominal;
+        }
+
+        return $jumlah;
+    }
+
+    public function unsetteld_payment(){
+        $sql = "select sum(nominal - IFNULL(terbayarkan, 0)) as nominal from pembayaran" .
+               " where nominal > IFNULL(terbayarkan, 0)";
+        
+        $query = $this->db->query($sql)->result();
+
+        $jumlah = 0;
+        foreach ($query as $row) {
+            $jumlah = $row->nominal;
+        }
+
+        return $jumlah;
+    }
+
     public function pembayaran_per_periode($periode1, $periode2){
         $this->db->order_by("pembayaran.no_pembayaran", "asc");
         $this->db->select($this->_table . ".*,pembeli.nama as nama_pembeli");

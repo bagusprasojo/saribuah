@@ -29,15 +29,25 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		if($this->user_model->isNotLogin()) {
-			$data['show_dashboard'] = 0;
-		} else {
-			$data['show_dashboard'] = 1;
+			$data['show_dashboard'] 		= 0;
+			$data['total_piutang'] 			= 0;
+			$data['jumlah_pembeli'] 		= 0;
+			$data['pembayaran_hari_ini'] 	= 0;
+			$data['unsettled_payment'] 		= 0;
+			
+		} else {	
+			$this->load->model("piutang_model");
+			$this->load->model("pembeli_model");
+			$this->load->model("pembayaran_model");
+
+			$data['show_dashboard'] 		= 1;
+			$data['total_piutang'] 			= $this->piutang_model->get_total_piutang_belum_lunas();
+			$data['jumlah_pembeli'] 		= $this->pembeli_model->jumlah_data();
+			$data['pembayaran_hari_ini'] 	= $this->pembayaran_model->total_pembayaran_hari_ini();
+			$data['unsettled_payment'] 		= $this->pembayaran_model->unsetteld_payment();
+			
 		}
 
-		$data['total_piutang'] 			= 1000000;
-		$data['jumlah_pembeli'] 		= 235;
-		$data['pembayaran_hari_ini'] 	= 3450000;
-		$data['unsettled_payment'] 		= 1230000;
 		$this->load->view('welcome_message', $data);
 	}
 }
