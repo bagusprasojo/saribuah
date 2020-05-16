@@ -74,6 +74,12 @@ class Settlement_model extends MY_Model
         return $snomor;
     }
 
+    public function daftar_settlement($pembayaran_id){
+        $sql = "select * from v_settlement_pembayaran where pembayaran_id = ?";
+        #return $this->db->get_where($this->_table, ["pembayaran_id" => $pembayaran_id])->row();
+        return $this->db->query($sql, [$pembayaran_id])->result();
+    }
+
     public function save(&$return_pembayaran_id)
     {
         $post   = $this->input->post();

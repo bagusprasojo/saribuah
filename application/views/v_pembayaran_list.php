@@ -75,8 +75,13 @@
 											<?php echo $pembayaran->keterangan ?>
 										</td>
 										<td width="250">
-											<a class="btn btn-primary" href="<?php echo site_url('pembayaran/settlement_piutang/'.$pembayaran->pembayaran_id) ?>">
+											<?php if ($pembayaran->nominal -$pembayaran->terbayarkan > 0){?>
+												<a class="btn btn-primary" href="<?php echo site_url('pembayaran/settlement_piutang/'.$pembayaran->pembayaran_id) ?>">
 												 Settlement  </a> 
+											<?php } else {?>
+												<a class="btn btn-primary" href="<?php echo site_url('pembayaran/rincian_bayar/'.$pembayaran->pembayaran_id) ?>">
+												 Rincian Pembayaran  </a>
+												 <?php }?>	 
 
 											<?php if ($pembayaran->terbayarkan <= 0){?>
 											<a class="btn btn-primary" href="<?php echo site_url('pembayaran/edit/'.$pembayaran->pembayaran_id) ?>">

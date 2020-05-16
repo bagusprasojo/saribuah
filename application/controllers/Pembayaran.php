@@ -152,6 +152,23 @@ class Pembayaran extends CI_Controller
         $this->load->view("v_piutang_outstanding",$data);
     }
 
+    public function rincian_bayar($pembayaran_id){
+        if ($pembayaran_id == ""){
+            redirect(site_url('pembayaran'));
+        }
+        
+        $pembayaran         = $this->pembayaran_model;
+        $data['pembayaran'] = $pembayaran->getById($pembayaran_id);
+
+        if ($data['pembayaran'] == null){
+            redirect(site_url('pembayaran'));
+        }
+
+        $this->load->model("settlement_model");
+        $data['settlements']   = $this->settlement_model->daftar_settlement($pembayaran_id);  
+        $this->load->view("v_settlement_list_by_pembayaran",$data);
+    }
+
     public function add($id=null)
     { 
         $pembayaran = $this->pembayaran_model;
