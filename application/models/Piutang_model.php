@@ -46,7 +46,7 @@ class Piutang_model extends MY_Model
     public function piutang_belum_lunas($pembeli_id){
         $this->db->order_by("no_transaksi", "asc");
         $this->db->join('pembeli', 'pembeli.pembeli_id = piutang.pembeli_id');
-        $this->db->where("nominal >= terbayar");
+        $this->db->where("nominal > terbayar");
         $this->db->where("piutang.pembeli_id = '" . $pembeli_id . "'");
 		return $query = $this->db->get($this->_table)->result();		
 	
