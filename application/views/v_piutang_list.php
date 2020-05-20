@@ -26,7 +26,12 @@
 						<div class="table-responsive">
 							<form action="<?php echo site_url('piutang/index/'); ?>" method="post">
 							<p>
-								No Transaksi <input value="<?php echo $nomor_transaksi?>" type="search" name="cari" placeholder="Search Keyword..."> <input type="submit" name="btn_submit" value="Search">
+								No Transaksi/ Nama
+								<input value="<?php echo $nomor_transaksi?>" type="search" name="cari" placeholder="Search Keyword..."> 
+								Periode
+								<input	type="date" name="tanggal1"/ value="<?php echo $tanggal1?>"> s.d. <input	type="date" name="tanggal2" value="<?php echo $tanggal2?>"/>
+						
+								<input type="submit" name="btn_submit" value="Search">
 							</p>
 
 							<table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -54,13 +59,13 @@
 											<?php echo $no++ ?>
 										</td>
 										
-										<td width="110"> 
+										<td width="105"> 
 											<?php echo $piutang->no_transaksi ?>
 										</td>
-										<td width="100">
+										<td width="95">
 											<?php echo $piutang->tgl_transaksi ?>
 										</td>
-										<td width="150">
+										<td width="115">
 											<?php echo $piutang->nama ?>
 										</td>
 										<td>
@@ -75,13 +80,18 @@
 										<td align="right">
 											<?php echo number_format($piutang->nominal - $piutang->terbayar) ?>
 										</td>
-										<td>
+										<td  width="60">
 											<?php echo $piutang->username ?>
 										</td>
-										<td width="150">
+										<td width="207">
+											<?php if (($piutang->nominal - $piutang->terbayar) > 0) {?>
+												<a href="<?php echo site_url('piutang/edit/'.$piutang->piutang_id) ?> "
+												class="btn btn-primary">Bayar</a>												
+											<?php }?>
+
 											<?php if ($piutang->terbayar <= 0){ ?>
 											<a href="<?php echo site_url('piutang/edit/'.$piutang->piutang_id) ?> "
-											class="btn btn-primary"> Edit</a>
+											class="btn btn-primary">Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('piutang/delete/'.$piutang->piutang_id) ?>')"
 												href="#!" class="btn btn-danger">Hapus</a>
 											<?php }?>

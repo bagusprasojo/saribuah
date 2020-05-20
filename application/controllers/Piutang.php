@@ -20,11 +20,27 @@ class Piutang extends CI_Controller
     public function index()
     {
         if (isset($_POST['btn_submit'])) {
-			$data['nomor_transaksi'] = $this->input->post('cari');
-			$this->session->set_userdata('sess_nomor_transaksi', $data['nomor_transaksi']);
+            $data['nomor_transaksi'] = $this->input->post('cari');
+            $data['tanggal1'] = $this->input->post('tanggal1');
+            $data['tanggal2'] = $this->input->post('tanggal2');
+            
+            $this->session->set_userdata('sess_nomor_transaksi', $data['nomor_transaksi']);
+            $this->session->set_userdata('sess_tanggal1', $data['tanggal1']);
+            $this->session->set_userdata('sess_tanggal2', $data['tanggal2']);
 		}
 		else {
-			$data['nomor_transaksi'] = $this->session->userdata('sess_nomor_transaksi');
+            $data['nomor_transaksi'] = $this->session->userdata('sess_nomor_transaksi');
+            if ($this->session->userdata('sess_tanggal1')==""){
+                $data['tanggal1'] = date("Y-m-d");    
+            } else {
+                $data['tanggal1'] = $this->session->userdata('sess_tanggal1');
+            }
+
+            if ($this->session->userdata('sess_tanggal2')==""){
+                $data['tanggal2'] = date("Y-m-d");    
+            } else {
+                $data['tanggal2'] = $this->session->userdata('sess_tanggal2');
+            }
 		}
         
         $this->load->library('pagination');
@@ -70,8 +86,8 @@ class Piutang extends CI_Controller
         
         $this->pagination->initialize($config);		
         
-        $data['piutangs'] = $this->piutang_model->data($config['per_page'],$from,$tgl1,$tgl2, $data['nomor_transaksi']);
-        $data['pagination'] = $this->pagination->create_links();
+        $data['piutangs']           = $this->piutang_model->data($config['per_page'],$from,$data['tanggal1'],$data['tanggal2'], $data['nomor_transaksi']);
+        $data['pagination']         = $this->pagination->create_links();
         $data['total_sisa_piutang'] = $this->piutang_model->get_total_piutang_belum_lunas();
         $this->load->view("v_piutang_list", $data);
 
