@@ -79,11 +79,12 @@ class Piutang_model extends MY_Model
     }
 
     function data($number,$offset, $first_date, $second_date, $no_transaksilike = null){
-        #$this->db->where('DATE(tgl_transaksi) >=',$first_date); 
-        #$this->db->where('DATE(tgl_transaksi) <=',$second_date);
+        $this->db->where('DATE(tgl_transaksi) >=',$first_date); 
+        $this->db->where('DATE(tgl_transaksi) <=',$second_date);
 
         if (!empty($no_transaksilike)) {
-			$this->db->like('no_transaksi', $no_transaksilike);
+            $where_or = "(no_transaksi like '%". $no_transaksilike. "%' or nama like '%". $no_transaksilike. "%')";
+            $this->db->where($where_or);
 		}
         
         $this->db->order_by("no_transaksi", "desc");
@@ -92,8 +93,12 @@ class Piutang_model extends MY_Model
 	}
  
 	function jumlah_data($first_date, $second_date,$no_transaksilike = null ){  
+        $this->db->where('DATE(tgl_transaksi) >=',$first_date); 
+        $this->db->where('DATE(tgl_transaksi) <=',$second_date);
+
         if (!empty($no_transaksilike)) {
-			$this->db->like('no_transaksi', $no_transaksilike);
+            $where_or = "(no_transaksi like '%". $no_transaksilike. "%' or nama like '%". $no_transaksilike. "%')";
+            $this->db->where($where_or);
 		}
         
         $this->db->join('pembeli', 'pembeli.pembeli_id = piutang.pembeli_id');

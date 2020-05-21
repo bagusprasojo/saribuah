@@ -18,9 +18,8 @@
 				
 			<div class="card-body">
 				<form action="<?php echo site_url('laporan/piutang_per_periode') ?>" method="post" enctype="multipart/form-data" >
-                    <div class="form-group">
-                    <label for="pembeli">Pembeli ID</label>
-                    <input type="hidden" name="pembeli_id"/>
+                    <div class="form-group" style="display:none">                    
+                    <input type="text" name="pembeli_id"/>
                     </div>
 
                     <div class="form-group">

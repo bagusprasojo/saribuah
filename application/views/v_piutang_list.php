@@ -29,7 +29,8 @@
 								No Transaksi/ Nama
 								<input value="<?php echo $nomor_transaksi?>" type="search" name="cari" placeholder="Search Keyword..."> 
 								Periode
-								<input	type="date" name="tanggal1"/ value="<?php echo $tanggal1?>"> s.d. <input	type="date" name="tanggal2" value="<?php echo $tanggal2?>"/>
+								<input	type="date" name="tanggal1" value="<?php echo $tanggal1?>" /> s.d. 
+								<input	type="date" name="tanggal2" value="<?php echo $tanggal2?>"/>
 						
 								<input type="submit" name="btn_submit" value="Search">
 							</p>
@@ -85,7 +86,7 @@
 										</td>
 										<td width="207">
 											<?php if (($piutang->nominal - $piutang->terbayar) > 0) {?>
-												<a href="<?php echo site_url('piutang/edit/'.$piutang->piutang_id) ?> "
+												<a href="<?php echo site_url('pembayaran/add_per_piutang/'.$piutang->piutang_id) ?> "
 												class="btn btn-primary">Bayar</a>												
 											<?php }?>
 

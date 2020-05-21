@@ -31,7 +31,7 @@ class Piutang extends CI_Controller
 		else {
             $data['nomor_transaksi'] = $this->session->userdata('sess_nomor_transaksi');
             if ($this->session->userdata('sess_tanggal1')==""){
-                $data['tanggal1'] = date("Y-m-d");    
+                $data['tanggal1'] = date("Y-m-01");    
             } else {
                 $data['tanggal1'] = $this->session->userdata('sess_tanggal1');
             }

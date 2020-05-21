@@ -134,7 +134,7 @@ class Pembayaran extends CI_Controller
         */
     }
 
-    public function settlement_piutang($pembayaran_id){
+    public function settlement_piutang($pembayaran_id=null){
         if ($pembayaran_id == ""){
             redirect(site_url('pembayaran'));
         }
@@ -152,7 +152,7 @@ class Pembayaran extends CI_Controller
         $this->load->view("v_piutang_outstanding",$data);
     }
 
-    public function rincian_bayar($pembayaran_id){
+    public function rincian_bayar($pembayaran_id=null){
         if ($pembayaran_id == ""){
             redirect(site_url('pembayaran'));
         }
@@ -210,6 +210,59 @@ class Pembayaran extends CI_Controller
         $data["pembayaran"]     = $pembayaran;
         $data["nama_pembeli"]   = "";
         $this->load->view("v_pembayaran_input", $data);
+    }
+
+    public function add_per_piutang($piutang_id=null)
+    { 
+        if ($piutang_id == null){
+            redirect('piutang');
+        }
+
+        $this->load->model("piutang_model");
+
+        $pembayaran = $this->pembayaran_model;
+        $piutang = $this->piutang_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($pembayaran->rules());
+
+        $post = $this->input->post();
+
+        if ($post){
+            $id = $post["pembayaran_id"];    
+            // $piutang        
+            
+            $this->pembayaran_id 	= $post["pembayaran_id"];
+            $this->pembeli_id 	    = $post["pembeli_id"];
+            $this->no_pembayaran 	= $post["no_pembayaran"];
+            $this->tgl_transaksi 	= $post["tgl_transaksi"];
+            $this->nominal 	        = $post["nominal"];
+
+
+            $pembayarans = "ID : " . $this->pembayaran_id . "<br>" .
+                        "Pembeli ID : " . $this->pembeli_id . "<br>" .
+                        "no_transaksi : " . $this->no_pembayaran . "<br>" .
+                        "tgl_transaksi : " . $this->tgl_transaksi . "<br>" .
+                        "nominal : " . $this->nominal . "<br>" ;
+
+            //echo $pembayarans;
+        }
+
+        if ($validation->run()) {
+            if ($pembayaran->save()) {
+                $this->session->set_flashdata('success', 'Berhasil disimpan');
+                redirect('pembayaran');
+                // return true;
+            }            
+        }
+
+        $pembayaran->tgl_transaksi = date("Y-m-d");
+        $pembayaran->piutang_id = $piutang_id;
+        $pembayaran->no_pembayaran = "Otomatis";
+
+        $data["pembayaran"] = $pembayaran;
+        $data["piutang"]    = $piutang->getById($piutang_id);
+
+        $this->load->view("v_pembayaran_input_per_piutang", $data);
     }
 
     function get_autocomplete(){

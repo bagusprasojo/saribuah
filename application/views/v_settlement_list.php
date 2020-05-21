@@ -14,7 +14,7 @@
       <?php $this->load->view("_partials/navigation.php") ?>
 	  <div class="card-header">
 			<?php $this->load->view("_partials/breadcrumb.php") ?>
-		</div>
+	  </div>
 			
 	  
       <!-- DataTables -->
