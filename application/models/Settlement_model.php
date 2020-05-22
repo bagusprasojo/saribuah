@@ -80,7 +80,7 @@ class Settlement_model extends MY_Model
         return $this->db->query($sql, [$pembayaran_id])->result();
     }
 
-    public function save(&$return_pembayaran_id)
+    public function save(&$return_pembayaran_id, $bayar_pembayaran_id)
     {
         $post   = $this->input->post();
         $snomor = $this->GetNomorBtnTerclick($post);
@@ -101,8 +101,14 @@ class Settlement_model extends MY_Model
         }
 
         $this->piutang_id 	    = $post["piutang_id". $snomor];        
-		$this->tgl_transaksi 	= $post["tgl_transaksi". $snomor];
-        $this->pembayaran_id 	= $post["pembayaran_id". $snomor];
+        $this->tgl_transaksi 	= $post["tgl_transaksi". $snomor];
+        
+        if ($bayar_pembayaran_id != null){
+            $this->pembayaran_id 	= $bayar_pembayaran_id;
+        } else {
+            $this->pembayaran_id 	= $post["pembayaran_id". $snomor];
+        }
+        
         $this->nominal          = $post["nominal". $snomor];
         $this->keterangan       = trim($post["keterangan". $snomor]);
 

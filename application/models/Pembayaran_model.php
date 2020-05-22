@@ -38,6 +38,17 @@ class Pembayaran_model extends MY_Model
         ];
     }
 
+    public function rules_per_piutang()
+    {
+        if ($this->rules()){
+            return [
+                ['field' => 'piutang_id',
+                'label' => 'Piutang',
+                'rules' => 'required']
+            ];
+        }
+    }
+
     public function total_pembayaran_hari_ini(){
         $sql = "select  SUM(nominal) as nominal from pembayaran" . 
                " WHERE CAST(tgl_transaksi AS DATE) = CURDATE()";
@@ -118,7 +129,7 @@ class Pembayaran_model extends MY_Model
     }
 
    
-    public function save()
+    public function save(&$return_pembayaran_id)
     {
         $post = $this->input->post();
         $id = $post["pembayaran_id"];
@@ -149,13 +160,14 @@ class Pembayaran_model extends MY_Model
 
          log_message('Debug', $pembayarans);
 
-		if ($is_new == true) {
+         $return_pembayaran_id = $this->pembayaran_id;
+		 if ($is_new == true) {
             log_message('Debug', "New Pembayaran");
 			return $this->db->insert($this->_table, $this);
-		} else {
+		 } else {
             log_message('Debug', "Update Pembayaran");
 			return $this->db->update($this->_table, $this, array('pembayaran_id' => $id));
-		}
+		 }
     }
 
     

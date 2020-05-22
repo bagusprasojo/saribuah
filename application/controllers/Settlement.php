@@ -80,7 +80,7 @@ class Settlement extends CI_Controller
 
     public function add(){
         $pembayaran_id = "";
-        if ($this->settlement_model->save($pembayaran_id )) {
+        if ($this->settlement_model->save($pembayaran_id,null )) {
             redirect(site_url('pembayaran/settlement_piutang/'.$pembayaran_id));
         } 
         
