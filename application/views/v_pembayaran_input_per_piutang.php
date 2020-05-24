@@ -51,6 +51,7 @@
 					</div>
 
 					<input type="hidden" name="piutang_id" value="<?php echo $piutang->piutang_id?>" />
+					<input type="hidden" name="settlement_id" value="" />
 					
 					<div class="form-group">
 						<label for="nomor_piutang">No Piutang*</label>
