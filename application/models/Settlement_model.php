@@ -112,7 +112,6 @@ class Settlement_model extends MY_Model
         $this->nominal          = $post["nominal". $snomor];
         $this->keterangan       = trim($post["keterangan". $snomor]);
 
-        $this->db->trans_begin();
         if ($is_new == true) {
             log_message('Debug', "New Settlement");
 			$this->db->insert($this->_table, $this);
@@ -133,20 +132,11 @@ class Settlement_model extends MY_Model
         $sql = "update pembayaran set terbayarkan = " . $terbayarkan . 
                " where pembayaran_id = '". $this->pembayaran_id . "'";
 
-        $this->db->query($sql);
+        $this->db->query($sql);        
 
-        
-
-        if ($this->db->trans_status() === FALSE)
-        {
-        $this->db->trans_rollback();
-        }
-        else
-        {
-            $this->db->trans_commit();
-            $return_pembayaran_id = $this->pembayaran_id; 
+        $return_pembayaran_id = $this->pembayaran_id; 
             return true;
-        }
+        
     }
 
     public function GetNominalPembayaranPiutang($piutang_id){
@@ -217,7 +207,7 @@ class Settlement_model extends MY_Model
     {
         $settlement = $this->getById($id);
         
-        $this->db->trans_begin();        
+                
         $this->db->delete($this->_table, array("settlement_id" => $id));
         // Update piutang terbayar
         $terbayar = $this->GetNominalPembayaranPiutang($settlement->piutang_id);
@@ -232,15 +222,7 @@ class Settlement_model extends MY_Model
                " where pembayaran_id = '". $settlement->pembayaran_id . "'";
 
         $this->db->query($sql);
-
-        if ($this->db->trans_status() === FALSE)
-        {
-        $this->db->trans_rollback();
-        }
-        else
-        {
-            $this->db->trans_commit();
-            return true;
-        }
+        return true;
+        
     }    
 }

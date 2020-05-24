@@ -101,8 +101,14 @@ class Pembeli extends CI_Controller
     {
         if (!isset($id)) show_404();
         
+        $this->db->trans_begin();        
         if ($this->pembeli_model->delete($id)) {
+            $this->db->trans_commit();
             redirect(site_url('pembeli'));
+        }
+
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
         }
     }
 }

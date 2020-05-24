@@ -127,11 +127,16 @@ class Piutang extends CI_Controller
 
 
         if ($validation->run()) {
+            $this->db->trans_begin();
+
             if ($piutang->save()) {
                 $this->session->set_flashdata('success', 'Berhasil disimpan');
-                redirect('piutang');
-                // return true;
-            }            
+                $this->db->trans_commit();
+                redirect('piutang');            }     
+            
+            if ($this->db->trans_status() === FALSE){
+                $this->db->trans_rollback();
+            }
         }
 
         $piutang->tgl_transaksi = date("Y-m-d");
@@ -180,8 +185,14 @@ class Piutang extends CI_Controller
     {
         if (!isset($id)) show_404();
         
+        $this->db->trans_commit();
         if ($this->piutang_model->delete($id)) {
+            $this->db->trans_commit();
             redirect(site_url('piutang'));
+        }
+
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
         }
     }
 }

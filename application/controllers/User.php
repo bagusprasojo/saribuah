@@ -98,11 +98,18 @@ class User extends CI_Controller
         $validation->set_rules($user->rules());
 
         if ($validation->run()) {
+            $this->db->trans_begin();
+
             if ($user->save()) {
                 $this->session->set_flashdata('success', 'Berhasil disimpan');
+                $this->db->trans_commit();
                 redirect('user');
                 // return true;
-            }            
+            }  
+            
+            if ($this->db->trans_status() === FALSE){
+                $this->db->trans_rollback();
+            }
         }
 
 		$data["user"] = $user;
@@ -147,8 +154,14 @@ class User extends CI_Controller
     {
         if (!isset($id)) show_404();
         
+        $this->db->trans_begin();
         if ($this->user_model->delete($id)) {
+            $this->db->trans_commit();
             redirect(site_url('user'));
+        }
+
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
         }
     }
 }

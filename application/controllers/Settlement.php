@@ -80,17 +80,28 @@ class Settlement extends CI_Controller
 
     public function add(){
         $pembayaran_id = "";
-        if ($this->settlement_model->save($pembayaran_id,null )) {
+        $this->db->trans_begin();
+
+        $this->settlement_model->save($pembayaran_id,null );
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+        } else {
+            $this->db->trans_commit();
             redirect(site_url('pembayaran/settlement_piutang/'.$pembayaran_id));
-        } 
-        
+        }        
     }
 
     public function delete($id=null)
-    {
+    {        
         if (!isset($id)) show_404();
         
-        if ($this->settlement_model->delete($id)) {
+        $this->db->trans_begin();
+        $this->settlement_model->delete($id);
+
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+        } else {
+            $this->db->trans_commit();
             redirect(site_url('settlement'));
         }
     }

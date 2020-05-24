@@ -25,10 +25,6 @@ class Piutang_model extends MY_Model
             'label' => 'No Transaksi',
             'rules' => 'required'],
 
-            ['field' => 'keterangan',
-            'label' => 'Keterangan',
-            'rules' => 'required'],
-
             ['field' => 'pembeli_id',
             'label' => 'Pembeli',
             'rules' => 'required'],

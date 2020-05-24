@@ -197,11 +197,19 @@ class Pembayaran extends CI_Controller
         }
 
         if ($validation->run()) {
+            $this->db->trans_begin();
+            
             if ($pembayaran->save($return_pembayaran_id)) {
                 $this->session->set_flashdata('success', 'Berhasil disimpan');
+                $this->db->trans_commit();
+                
                 redirect('pembayaran');
                 // return true;
-            }            
+            }  
+            
+            if ($this->db->trans_status() === FALSE){
+                $this->db->trans_rollback();
+            }
         }
 
         $pembayaran->tgl_transaksi = date("Y-m-d");
@@ -230,33 +238,23 @@ class Pembayaran extends CI_Controller
         $post = $this->input->post();
 
         if ($post){
-            // $id = $post["pembayaran_id"];    
-            // $piutang        
-            
-            // $this->pembayaran_id 	= $post["pembayaran_id"];
-            // $this->pembeli_id 	    = $post["pembeli_id"];
-            // $this->no_pembayaran 	= $post["no_pembayaran"];
-            // $this->tgl_transaksi 	= $post["tgl_transaksi"];
-            // $this->nominal 	        = $post["nominal"];
-
-
-            // $pembayarans = "ID : " . $this->pembayaran_id . "<br>" .
-            //             "Pembeli ID : " . $this->pembeli_id . "<br>" .
-            //             "no_transaksi : " . $this->no_pembayaran . "<br>" .
-            //             "tgl_transaksi : " . $this->tgl_transaksi . "<br>" .
-            //             "nominal : " . $this->nominal . "<br>" ;
-
-            //echo $pembayarans;
         }
 
         if ($validation->run()) {
+            $this->db->trans_begin();
             if ($pembayaran->save($return_pembayaran_id)) {
                 if ($settlement->save($return_pembayaran_id, $return_pembayaran_id)) {
+                    $this->db->trans_commit();
+                    
                     $this->session->set_flashdata('success', 'Berhasil disimpan');
                     redirect('piutang');
                 }
                 // return true;
-            }            
+            }
+            
+            if ($this->db->trans_status() === FALSE){
+                $this->db->trans_rollback();
+            }
         }
 
         $pembayaran->tgl_transaksi  = date("Y-m-d");
@@ -308,8 +306,14 @@ class Pembayaran extends CI_Controller
     {
         if (!isset($id)) show_404();
         
+        $this->db->trans_begin();
         if ($this->pembayaran_model->delete($id)) {
+            $this->db->trans_commit();
             redirect(site_url('pembayaran'));
+        }
+
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
         }
     }
 }
