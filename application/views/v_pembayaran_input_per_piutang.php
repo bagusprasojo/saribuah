@@ -18,7 +18,7 @@
 			</div>
 				
 			<div class="card-body">
-				<form action="<?php echo site_url('pembayaran/add_per_piutang/' . $piutang->piutang_id) ?>" method="post" enctype="multipart/form-data" >
+				<form action="<?php echo site_url('pembayaran/add_per_piutang/' . $piutang->piutang_id) ?>" onsubmit="return Validasi()" method="post" enctype="multipart/form-data" >
 					<input type="hidden" name="pembayaran_id" value="<?php echo $pembayaran->pembayaran_id?>" />
 					
 					<div class="form-group">
@@ -65,14 +65,14 @@
 					<div class="form-group">
 						<label for="nominal">Nominal Piutang</label>
 						<input readonly class="form-control <?php echo form_error('nominal ') ? 'is-invalid':'' ?>"
-							type="text" name="nominal_piutang" placeholder="0" value="<?php $sisa = $piutang->nominal - $piutang->terbayar; echo number_format($sisa)  ?>"/>
+							type="number" id="nominal_piutang" name="nominal_piutang" placeholder="0" value="<?php $sisa = $piutang->nominal - $piutang->terbayar; echo $sisa  ?>"/>
 						
 					</div>
 
 					<div class="form-group">
 						<label for="nominal">Nominal*</label>
 						<input class="form-control <?php echo form_error('nominal ') ? 'is-invalid':'' ?>"
-							type="number" name="nominal" placeholder="0" value="<?php echo $pembayaran->nominal  ?>"/>
+							type="number" name="nominal" id="nominal" placeholder="0" value="<?php echo $pembayaran->nominal  ?>"/>
 						<div class="invalid-feedback">
 							<?php echo form_error('nominal') ?>
 						</div>
@@ -105,6 +105,18 @@
   <?php $this->load->view("_partials/footer.php") ?>
   <?php $this->load->view("_partials/modal.php") ?>
   <?php $this->load->view("_partials/js.php") ?>
+
+  <script type="text/javascript">
+  	function Validasi() {
+  		var piutang =  parseFloat(document.getElementById('nominal_piutang').value);
+		var bayar = parseFloat(document.getElementById('nominal').value);
+
+		if (piutang<bayar) {
+			window.alert('Pembayaran Tidak Boleh Melebihi Piutang');
+			return false;
+		}	
+  	}
+  </script>
 
 
     
