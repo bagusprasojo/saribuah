@@ -34,7 +34,7 @@
 										<th>Username</th>
 										<th>Name</th>
 										<th>Last Login</th>
-										<th>Action</th>
+										
 									</tr>
 								</thead>
 								<tbody>
@@ -56,12 +56,7 @@
 											<?php echo $user->last_login ?>
 										</td>
 										
-										<td width="250">
-											<a class="btn btn-primary" href="<?php echo site_url('user/edit/'.$user->user_id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('user/delete/'.$user->user_id) ?>')"
-											 href="#!" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>
-										</td>
+										
 									</tr>
 									<?php endforeach; ?>
 
