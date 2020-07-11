@@ -152,7 +152,7 @@ class User extends CI_Controller
 
     public function delete($id=null)
     {
-        if (!isset($id)) show_404();
+        /*if (!isset($id)) show_404();
         
         $this->db->trans_begin();
         if ($this->user_model->delete($id)) {
@@ -163,5 +163,6 @@ class User extends CI_Controller
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
         }
+        */
     }
 }
