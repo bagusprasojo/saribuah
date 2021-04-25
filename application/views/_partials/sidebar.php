@@ -20,7 +20,7 @@
 				<li><a href="<?php echo site_url('laporan/pembayaran_per_periode') ?>">Pembayaran Per Periode</a></li>
 				<li><a href="<?php echo site_url('laporan/piutang_per_periode') ?>">Tagihan Piutang</a></li>
 				<li><a href="<?php echo site_url('laporan/totalPiutang') ?>">Total Piutang</a></li>
-				<li><a href="<?php echo site_url('laporan/rekap_transaksi') ?>">Rekap Transaksi</a></li>
+				
 			</ul>
 			
 			<a href="#" class="list-group-item">Status</a>	
