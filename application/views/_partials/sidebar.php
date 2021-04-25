@@ -12,6 +12,7 @@
 			<a href="<?php echo site_url('user') ?>" class="list-group-item">Data User</a>
 			<a href="<?php echo site_url('pembeli') ?>" class="list-group-item">Data Pembeli</a>
 			<a href="<?php echo site_url('piutang') ?>" class="list-group-item">Data Piutang</a>
+			<a href="<?php echo site_url('produk') ?>" class="list-group-item">Data Produk</a>
 			<a href="<?php echo site_url('pembayaran') ?>" class="list-group-item">Input Pembayaran</a>
 			<a href="<?php echo site_url('settlement') ?>" class="list-group-item">Settlement Pembayaran</a>
 			<a href="<?php echo site_url('laporan') ?>" class="list-group-item">Laporan</a>
@@ -19,6 +20,7 @@
 				<li><a href="<?php echo site_url('laporan/pembayaran_per_periode') ?>">Pembayaran Per Periode</a></li>
 				<li><a href="<?php echo site_url('laporan/piutang_per_periode') ?>">Tagihan Piutang</a></li>
 				<li><a href="<?php echo site_url('laporan/totalPiutang') ?>">Total Piutang</a></li>
+				<li><a href="<?php echo site_url('laporan/rekap_transaksi') ?>">Rekap Transaksi</a></li>
 			</ul>
 			
 			<a href="#" class="list-group-item">Status</a>	

@@ -17,6 +17,26 @@ class Laporan extends CI_Controller
         }
     }
 
+    public function rekap_transaksi(){
+        $post = $this->input->post();
+
+        if ($post){
+            $periode1       = $post["periode1"];
+            $periode2       = $post["periode2"];
+
+            $this->load->model("pembayaran_model");
+            
+            $data['pembayarans']    = $this->pembayaran_model->pembayaran_per_periode($periode1, $periode2);
+            $data['periode1']       = $periode1;
+            $data['periode2']       = $periode2;
+             
+             $this->load->view("v_pembayaran_per_periode_pdf.php", $data);
+        }
+
+        $this->load->view("v_rekap_transaksi.php");
+    }
+
+
     public function pembayaran_per_periode(){
         $post = $this->input->post();
 
