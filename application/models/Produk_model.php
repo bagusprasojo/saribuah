@@ -2,7 +2,7 @@
 
 class Produk_model extends CI_Model
 {
-    private $_table = "Produk";
+    private $_table = "produk";
 
     public $produk_id;
     public $kode;
