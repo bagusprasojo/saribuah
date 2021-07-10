@@ -88,21 +88,21 @@
   <?php $this->load->view("_partials/js.php") ?>
 
 
-    <script src="<?php echo base_url().'vendor/jquery-ui-1.12.1/jquery-ui.js'?>" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
- 
-            $('#pembeli').autocomplete({
-                source: "<?php echo site_url('pembayaran/get_autocomplete');?>",
-      
-                select: function (event, ui) {
-                    $('[name="pembeli"]').val(ui.item.label); 
-                    $('[name="pembeli_id"]').val(ui.item.description); 
-                }
-            });
- 
-        });
-    </script>
+	<script src="<?php echo base_url().'vendor/jquery-ui-1.12.1/jquery-ui.js'?>" type="text/javascript"></script>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+
+	        $('#pembeli').autocomplete({
+	            source: "<?php echo site_url('pembayaran/get_autocomplete');?>",
+	  
+	            select: function (event, ui) {
+	                $('[name="pembeli"]').val(ui.item.label); 
+	                $('[name="pembeli_id"]').val(ui.item.description); 
+	            }
+	        });
+
+	    });
+	</script>
 
   
 

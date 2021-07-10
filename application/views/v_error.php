@@ -19,7 +19,8 @@
         </div>
         
         <div class="card-body">
-            <?php echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>"; ?>
+            <?php echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>"; ?><br>
+            <?php echo $salah ?>
         </div>
 				
       
