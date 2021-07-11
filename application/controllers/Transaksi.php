@@ -20,29 +20,38 @@ class Transaksi extends CI_Controller
     {
         if (isset($_POST['btn_submit'])) {
 			$data['nama'] = $this->input->post('cari');
+            $data['tanggal1'] = $this->input->post('tanggal1');
+            $data['tanggal2'] = $this->input->post('tanggal2');
+
 			// se session userdata untuk pencarian, untuk paging pencarian
 			$this->session->set_userdata('sess_nama', $data['nama']);
+            $this->session->set_userdata('sess_tanggal1', $data['tanggal1']);
+            $this->session->set_userdata('sess_tanggal2', $data['tanggal2']);
 		}
 		else {
 			$data['nama'] = $this->session->userdata('sess_nama');
+
+            if ($this->session->userdata('sess_tanggal1')==""){
+                $data['tanggal1'] = date("Y-m-01");    
+            } else {
+                $data['tanggal1'] = $this->session->userdata('sess_tanggal1');
+            }
+
+            if ($this->session->userdata('sess_tanggal2')==""){
+                $data['tanggal2'] = date("Y-m-d");    
+            } else {
+                $data['tanggal2'] = $this->session->userdata('sess_tanggal2');
+            }
 		}
 
-        $this->load->helper('date');
         $from                   = $this->uri->segment(3);
-        $tgl1                   = $this->uri->segment(4);
-
-        if (empty($tgl1)){
-            $tgl1 = mdate();
-        }
-
-        $tgl2                   = $this->uri->segment(5);
-        if (empty($tgl2)){
-            $tgl2 = mdate();
-        }   
         
-        $jumlah_data = $this->transaksi_model->jumlah_data($tgl1,$tgl2, $data['nama']);
-
         
+        $jumlah_data = $this->transaksi_model->jumlah_data($data['tanggal1'],$data['tanggal2'], $data['nama']);
+
+        #echo "from : " . $from . "<br>";
+        #echo "tgl1 : " . $tgl1 . "<br>";
+        #echo "tgl1 : " . $jumlah_data . "<br>";
 
 		$this->load->library('pagination');
 		$config['base_url']     = base_url().'index.php/transaksi/index/';
@@ -67,7 +76,7 @@ class Transaksi extends CI_Controller
         $config['first_tag_open'] = '</span></li>';
 
 		$this->pagination->initialize($config);
-        $data['transaksis'] = $this->transaksi_model->data($config['per_page'],$from,$tgl1,$tgl2, $data['nama']);
+        $data['transaksis'] = $this->transaksi_model->data($config['per_page'],$from,$data['tanggal1'],$data['tanggal2'], $data['nama']);
         $data['pagination'] = $this->pagination->create_links();
         $this->load->view("v_transaksi_list", $data);
     }

@@ -68,10 +68,17 @@ class Transaksi_model extends MY_Model
     }
 
     function data($number,$offset, $first_date, $second_date, $nama_produk_like = null){
+
+        $this->db->where('DATE(tgl_transaksi) >=',$first_date); 
+        $this->db->where('DATE(tgl_transaksi) <=',$second_date);
+
+        
         if (!empty($nama_produk_like)) {
-            $this->db->like('produk.nama', $nama_produk_like);
+            $where_or = "(produk.nama like '%". $nama_produk_like. "%' or produk.kode like '%". $nama_produk_like. "%')";
+            $this->db->where($where_or);
         }
         
+
         $this->db->order_by("produk.nama", "asc");
         $this->db->select($this->_table . ".*,produk.nama as nama_produk,produk.kode as kode_produk ");
         $this->db->join('produk', 'produk.produk_id = transaksi.produk_id');
@@ -80,8 +87,24 @@ class Transaksi_model extends MY_Model
  
 	function jumlah_data($first_date, $second_date,$nama_produk_like = null ){
         
+        $this->db->where('DATE(tgl_transaksi) >=',$first_date); 
+        $this->db->where('DATE(tgl_transaksi) <=',$second_date);
+
+        
+        if (!empty($nama_produk_like)) {
+            $where_or = "(nama like '%". $nama_produk_like. "%' or kode like '%". $nama_produk_like. "%')";
+            $this->db->where($where_or);
+        }
+        
+
         $this->db->join('produk', 'produk.produk_id = transaksi.produk_id');
+       
+        #$this->output->enable_profiler(TRUE);
+        #print_r($this->db->last_query());    
+
         return $this->db->get($this->_table)->num_rows();
+
+
     }
     
     function search_produk($nama){

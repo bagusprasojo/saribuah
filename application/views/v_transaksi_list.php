@@ -26,7 +26,12 @@
 						<div class="table-responsive">
 							<form action="<?php echo site_url('transaksi/index/'); ?>" method="post">
 							<p>
-								Nama <input value ="<?php echo $nama?>" type="search" name="cari" placeholder="Search Keyword..."> <input type="submit" name="btn_submit" value="Search">
+								Nama <input value ="<?php echo $nama?>" type="search" name="cari" placeholder="Search Keyword..."> 
+								Periode
+								<input	type="date" name="tanggal1" value="<?php echo $tanggal1?>" /> s.d. 
+								<input	type="date" name="tanggal2" value="<?php echo $tanggal2?>"/>
+						
+								<input type="submit" name="btn_submit" value="Search">
 							</p>
 
 							<table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">

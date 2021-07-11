@@ -46,21 +46,10 @@ class Piutang extends CI_Controller
         $this->load->library('pagination');
         $this->load->helper('date');
 		$from                   = $this->uri->segment(3);
-        $tgl1                   = $this->uri->segment(4);
+        
 
-        if (empty($tgl1)){
-            $tgl1 = mdate();
-        }
-
-        $tgl2                   = $this->uri->segment(5);
-        if (empty($tgl2)){
-            $tgl2 = mdate();
-        }
-
-        //echo "from : " . $from . "<br>";
-        //echo "tgl1 : " . $tgl1 . "<br>";
-
-        $jumlah_data = $this->piutang_model->jumlah_data($tgl1, $tgl2, $data['nomor_transaksi']);
+        
+        $jumlah_data = $this->piutang_model->jumlah_data($data['tanggal1'],$data['tanggal2'], $data['nomor_transaksi']);
 
         $config['base_url']     = base_url().'index.php/piutang/index/';
 		$config['total_rows']   = $jumlah_data;
